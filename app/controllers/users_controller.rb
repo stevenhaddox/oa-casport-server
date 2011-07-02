@@ -14,10 +14,24 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
+    @casport_user = {
+      :userinfo => {
+        :uid      => @user.id,
+        :fullName => "#{@user.first_name.to_s} #{@user.last_name.to_s}",
+        :email    => @user.email,
+        :cell     => @user.cell,
+        :phone    => @user.phone,
+        :address  => @user.address,
+        :address2 => @user.address2,
+        :city     => @user.city,
+        :state    => @user.state,
+        :country  => @user.country
+      }
+    }
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render :xml => @casport_user }
     end
   end
 
