@@ -14,24 +14,13 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-    @casport_user = {
-      :uid       => @user.id,
-      :fullName  => @user.full_name,
-      :firstName => @user.first_name,
-      :lastName  => @user.last_name,
-      :email     => @user.email,
-      :cell      => @user.cell,
-      :phone     => @user.phone,
-      :address   => @user.address,
-      :address2  => @user.address2,
-      :city      => @user.city,
-      :state     => @user.state,
-      :country   => @user.country
-    }
+    @casport_user = @user.to_casport
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml { render :xml => @casport_user.to_xml(:root => 'userinfo'), :content_type => 'application/xml' }
+      format.json { render :json => @casport_user }
+      format.xml { render :xml => @casport_user[:userinfo].to_xml(:root => 'userinfo') }
+      # format.xml { render :xml => @user.to_casport.to_xml(:root => 'userinfo') }
     end
   end
 
