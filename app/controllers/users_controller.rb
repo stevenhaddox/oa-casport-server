@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       format.html # show.html.erb
       format.json { render :json => @casport_user }
       format.xml { render :xml => @casport_user[:userinfo].to_xml(:root => 'userinfo') }
-      # format.xml { render :xml => @user.to_casport.to_xml(:root => 'userinfo') }
     end
   end
 
