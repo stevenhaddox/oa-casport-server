@@ -31,7 +31,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @casport_user }
+      # format.xml  { render :xml => @casport_user }
+      format.xml { render :xml => @casport_user[:userinfo].to_xml(:root => 'userinfo'), :content_type => 'application/xml' }
     end
   end
 
