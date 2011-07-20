@@ -1,3 +1,5 @@
+### The cas.dev project is coming from this Github repo:
+### https://github.com/stevenhaddox/oa-casport-server
 require 'rubygems'
 require 'httparty'
 require 'awesome_print'
