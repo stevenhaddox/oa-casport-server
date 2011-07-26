@@ -14,8 +14,9 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-    @casport_user = @user.to_casport
-
+    @casport_user = @user.to_casport if @user
+    #@user ||= "A random error string"
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @casport_user }

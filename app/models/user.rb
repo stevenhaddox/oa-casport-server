@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
       :userinfo => 
       {
         :uid       => id,
+        :dn        => id,
         :fullName  => full_name,
         :firstName => first_name,
         :lastName  => last_name,
